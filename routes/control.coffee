@@ -66,6 +66,8 @@ control.get '/', checkLogin, (req, res) ->
       res.redirect './nickname#register'
 
     else
+      req.session.nickname = d.nickname
+      
       azuinfo.get '/userdata/refresh', req.session.sess, handle res, null, (refresh) ->
         res.locals =
           session: req.session.sess
@@ -79,7 +81,7 @@ control.get '/login', (req, res) ->
   res.login_uri = req.protocol + '://' + config.login
 
   if req.session.sess
-    res.redirect './'
+    res.render 'control/login', {login: true, nickname: req.session.nickname}
 
   else if req.query.session
     unless /^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test req.query.session
@@ -101,7 +103,7 @@ control.get '/login', (req, res) ->
             res.redirect '.'
 
   else
-    res.render 'control/login'
+    res.render 'control/login', {login: false}
 
 control.get '/nickname', checkLogin, (req, res) ->
 

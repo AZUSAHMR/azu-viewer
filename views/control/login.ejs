@@ -1,47 +1,44 @@
 <%- include('../partial/header', {
-  title: '로그인',
+  title: '홈',
   script: [
     '/js/bowser.min.js',
     '/js/browser-opt.js'
   ]
 }) %>
 <header class="text-only">
-  <h1> 로그인 </h1>
+  <h1> 홈 </h1>
 </header>
 <main>
   <div class="content">
-    <div class="plugin-content">
-      <div class="opt opt-chrome hidden">
-        <a href="https://chrome.google.com/webstore/detail/bgbbmehmfgomgnlapkigehemakghfbpj">
-          Chrome 플러그인 설치
-        </a>
-      </div>
-      <div class="opt opt-firefox hidden">
-        <button class="btn" onclick="InstallTrigger.install({'azuinfo-logintool': 'http://cdn.azu.kr/system/firefox/latest.xpi'});">
-          FireFox 플러그인 설치
-        </button>
-      </div>
+    <div class="text-center">
+      <button class="btn" onclick="location.href='<%- login? "./" : "https://p.eagate.573.jp/gate/p/login.html" %>';">
+        <%- login? "제어판으로 이동" : "갱신을 위해 로그인" %>
+      </button>
     </div>
-    <div class="opt opt-chrome opt-firefox hidden">
+	<br>
+    <div>
       또는
     </div>
-    <p>
-      <a href="http://iidx.me/">IIDX.me</a>와 비슷한 방식으로 로그인하면 됩니다.
-    </p>
-    <ol class="list">
-      <li>
-        <a href="http://p.eagate.573.jp/">eAMUSEMENT</a> 페이지에 로그인합니다.
-      </li>
-      <li>
-        아래 코드를 복사해 주소창에 붙여넣습니다.
-        <br />
-        <b>주의</b>: 붙여넣을 때 앞의 <code>javascript:</code>가 날아가기
-        때문에, 직접 다시 입력해야 합니다.
-      </li>
-    </ol>
-    <pre onclick="prompt('Ctrl/Cmd-C를 눌러 복사하세요', this.textContent)"
-      >javascript:try{location.href='<%= login_uri %>?session='+/M573SSID=([0-9a-f\-]{36})/.exec(document.cookie)[1]}catch(e){alert(e)}
-    </pre>
+	<br>
+    <div class="text-center">
+	  <input type="text" id="vs0"<%- login? " placeholder=\""+nickname+"\"" : "" %>>
+      <button class="btn" onclick="location.href='http://android.kano.kr/sdvx/'+(vs0.value?vs0.value:vs0.placeholder);">
+        조회
+      </button>
+    </div>
+	<br>
+	<div>
+      또는
+    </div>
+	<br>
+    <div class="text-center">
+	  <input type="text" id="vs1"<%- login? " placeholder=\""+nickname+"\"" : "" %>><br>
+	  vs<br>
+	  <input type="text" id="vs2"><br>
+      <button class="btn" onclick="location.href='http://android.kano.kr/sdvx/'+(vs1.value?vs1.value:vs1.placeholder)+'/vs/'+vs2.value">
+        비교
+      </button>
+    </div>
   </div>
 </main>
 <% if(typeof error === 'string') { %>
@@ -50,5 +47,5 @@
       }) %>
 <% } %>
 <%- include('../partial/nav') %>
-<%- include('../partial/aside/control') %>
+<%- login? include('../partial/aside/control',{home: true}) : include('../partial/aside/login') %>
 <%- include('../partial/footer') %>

@@ -51,7 +51,7 @@ window.addEventListener('load', function() {
   $('#request').addEventListener('click', function() {
     var card = $('#card')
     var password = $('#password')
-    var swap = $('#swap')
+    var swap = $('#option_1').checked?0:1;
     var devices = $('.input-devices:checked')
     var device = 0
 
@@ -69,7 +69,7 @@ window.addEventListener('load', function() {
       var data = 'card=' + card.value +
                  '&password=' + password.value +
                  '&device=' + device +
-                 '&swap=1'
+                 '&swap=' + swap;
 
       var xhr = new XMLHttpRequest()
       xhr.open('POST', BaseURI + '/userdata/refresh/' + session + '.json', true)

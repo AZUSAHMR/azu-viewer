@@ -1,8 +1,8 @@
 {
-  "listen": 8080,
+  "listen": "/home/ubuntu/sock/android.sock",
   "baseuri": "http://api.kano.kr",
   "static": "/!/public",
-  "login": "http://localhost:8080/control/login",
+  "login": "http://android.kano.kr/control",
   "sdvx": {
     "json": "/playdata/sdvx"
   }

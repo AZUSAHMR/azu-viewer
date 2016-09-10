@@ -65,45 +65,6 @@ var errors = [
         </li>
       <% } %>
     </ol>
-    <h2> 기록 보기 </h2>
-    <ul class="list">
-      <li>
-        팝픈:
-        <ul class="list">
-          <li>
-            <a href="http://popn.azu.kr/<%= user.nickname %>"> http://popn.azu.kr/<%= user.nickname %> </a>
-          </li>
-          <li class="text-muted" style="text-decoration: strike">
-            신 아즈인포 준비 중
-          </li>
-        </ul>
-      </li>
-      <li>
-        사볼:
-        <ul class="list">
-          <li class="text-muted">
-            구 히비야 뷰어:
-            <a href="http://hibiya.azu.kr/<%= user.nickname %>"> http://hibiya.azu.kr/<%= user.nickname %> </a>
-          </li>
-          <li class="text-muted">
-            구 아즈인포:
-            <a href="http://sdvx.azu.kr/<%= user.nickname %>"> http://sdvx.azu.kr/<%= user.nickname %> </a>
-          </li>
-          <li>
-            신 아즈인포:
-            <a href="http://test.azu.kr/<%= user.nickname %>"> http://test.azu.kr/<%= user.nickname %> </a>
-          </li>
-          <li>
-            기록 비교하기:
-            <br />
-            <input type="text" id="vs1" value="<%= user.nickname %>" />
-            vs
-            <input type="text" id="vs2" />
-            <button class="btn btn-primary" onclick="location.href='http://test.azu.kr/'+vs1.value+'/vs/'+vs2.value"> 이동 </button>
-          </li>
-        </ul>
-      </li>
-    </ul>
     <h2> 갱신 </h2>
     <p>
       <label for="card"> 카드 번호 </label>
@@ -116,6 +77,11 @@ var errors = [
       <label for="password"> 비밀번호 </label>
       <input type="text" id="password" maxlength="4" pattern="^[0-9]{4}$" />
     </p>
+	<p>
+		<label> 옵션 </label>
+		<input type="checkbox" id="option_1" value="1" />
+		<label for="option_1" style="width: auto;"> 내 계정의 베이직코스를 이용해 빠른 갱신 </label>
+	</p>
     <p>
       <label> 기종 </label>
       <input type="checkbox" id="device_1" class="input-devices" value="1" checked/>
@@ -129,5 +95,5 @@ var errors = [
   </div>
 </main>
 <%- include('../partial/nav') %>
-<%- include('../partial/aside/control') %>
+<%- include('../partial/aside/control',{home: false}) %>
 <%- include('../partial/footer') %>
