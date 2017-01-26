@@ -1,3 +1,26 @@
-유니콘과 이 페이지의 공통점을 아세요?
-
-존재하지 않는다는 거에요!
+<%- include('./partial/header', {
+  title: '오류',
+  script: [
+    '/js/bowser.min.js',
+    '/js/browser-opt.js'
+  ]
+}) %>
+<header class="text-only">
+  <h1> 오류 </h1>
+</header>
+<main>
+  <div class="content">
+    <div class="text-center">
+      <img src="http://kano.azu.kr/img/20150603.png" style="max-width: 90vw; max-height: 90vh; margin: 0 auto;"><br>
+	  이 페이지는 없는 페이지에요!<br>
+	  혹시 닉네임을 잘못 입력하신건 아닐까요?
+    </div>
+  </div>
+</main>
+<% if(typeof error === 'string') { %>
+  <%- include('./partial/error', {
+        error: error
+      }) %>
+<% } %>
+<%- include('./partial/nav') %>
+<%- include('./partial/footer') %>
