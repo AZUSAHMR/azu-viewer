@@ -1,6 +1,6 @@
 .toolbar-decorator
   width: 100%
-  height: $header-height
+  height: $header-padding-top * 3
   background: $header-background
 
   position: absolute
@@ -8,8 +8,6 @@
 
 header
   @extend .width-container
-
-  height: $header-height + $header-padding-top
 
   position: relative
 
@@ -28,9 +26,9 @@ header
     @extend %card
 
     display: inline-block
-    height: $header-height
+    height: $header-element-height
 
-    float: left
+    vertical-align: top
 
   .profile
 
@@ -133,6 +131,7 @@ header
         padding: 0.25em 0.5em
 
         apparence: none
+        -moz-appearance: none
         -webkit-appearance: none
         background: none
 
